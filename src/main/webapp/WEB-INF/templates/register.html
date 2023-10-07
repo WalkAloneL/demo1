@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>留言板demo</title>
+  </head>
+
+<form method="post" action="/register">
+
+  <h3>注册</h3>
+  {% if error != null %}
+  <div>
+    <p>{{ error }}</p>
+  </div>
+  {% endif %}
+
+  <div>
+    <label>Name</label>
+    <input name="name" type="text">
+  </div>
+
+  <div>
+    <label>Password</label>
+    <input name="password" type="password">
+  </div>
+
+  <div>
+    <button type="submit">提交</button>
+  </div>
+
+  <div>
+    <a href="/signin">已有账户?</a>
+  </div>
+
+</form>
+
+</html>

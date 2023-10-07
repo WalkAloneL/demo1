@@ -55,11 +55,11 @@ public class Main {
             }));
         }
         // 启动Tomcat:
-        Runtomcat.run(webDir,isJarFile ? "tmp-webapp" : "target/classes");
+        RunTomcat.run(webDir,isJarFile ? "tmp-webapp" : "target/classes");
     }
     
 }
-class Runtomcat{
+class RunTomcat{
     static void run(String webDir,String baseDir) throws Exception{
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(Integer.getInteger("port", 8080));

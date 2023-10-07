@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>留言板demo</title>
+  </head>
+{% if user == null %}
+<h3>欢迎，请先登录!</h3>
+<p><a href="/signin">登录</a> or <a href="/register">注册</a>
+{% else %}
+<h3>欢迎 {{ user.name }}!</h3>
+<p><a href="/comment">查看留言</a>   <a href="/signout">登出</a>
+{% endif %}
+</p>
+</html>
