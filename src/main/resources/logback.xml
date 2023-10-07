@@ -7,7 +7,7 @@
 		</layout>
 	</appender>
 
-	<logger name="com.aaaa.demo1" level="info" additivity="false">
+	<logger name="com.aaaa.demo" level="info" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 

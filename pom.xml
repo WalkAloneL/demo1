@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.aaaa.demo</groupId>
     <artifactId>web-aaaa</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     
     <properties>
@@ -75,14 +75,12 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
             <version>10.1.1</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
             <version>10.1.1</version>
-            <scope>provided</scope>
         </dependency>
 
     </dependencies>
@@ -92,23 +90,27 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.1</version>
+                <version>3.3.2</version>
+				<configuration>
+					<!-- 复制classes到war包根目录 -->
+					<webResources>
+						<resource>
+							<directory>${project.build.directory}/classes</directory>
+						</resource>
+					</webResources>
+					<archiveClasses>true</archiveClasses>
+					<archive>
+						<manifest>
+                            <!-- main启动类 -->
+                            <mainClass>com.aaaa.demo.Main</mainClass>
+							<!-- 添加Class-Path -->
+							<addClasspath>true</addClasspath>
+							<!-- Classpath前缀 -->
+							<classpathPrefix>tmp-webapp/WEB-INF/lib/</classpathPrefix>							
+						</manifest>
+					</archive>
+				</configuration>
             </plugin>
-
-            <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.1</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
         </plugins>
         <finalName>demo1</finalName>
     </build>
