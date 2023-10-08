@@ -18,7 +18,7 @@ import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
 
 public class Main {
-    
+     
     public static void main(String args[]) throws Exception{
         // 判定是否从jar/war启动:
         String jarFile = AppConfig.class.getProtectionDomain().getCodeSource().getLocation().getFile();
