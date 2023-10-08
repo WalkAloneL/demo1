@@ -1,5 +1,6 @@
 package com.aaaa.demo.service;
 
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class CommentService {
         comment.setCreatedAt(System.currentTimeMillis());
         KeyHolder key = new GeneratedKeyHolder();
         if(1 != jdbcTemplate.update((conn) -> {
-            var ps = conn.prepareStatement("INSERT INTO comments(name,text,createdAt) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO comments(name,text,createdAt) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);
             ps.setObject(1, comment.getName());
             ps.setObject(2, comment.getText());
             ps.setObject(3, comment.getCreatedAt());

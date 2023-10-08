@@ -1,5 +1,6 @@
 package com.aaaa.demo.service;
 
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 import org.slf4j.Logger;
@@ -48,7 +49,7 @@ public class UserService {
         user.setCreatedAt(System.currentTimeMillis());
         KeyHolder holder = new GeneratedKeyHolder();
         if (1 != jdbcTemplate.update((conn) -> {
-            var ps = conn.prepareStatement("INSERT INTO users(name,password,createdAt) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO users(name,password,createdAt) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);
             ps.setObject(1, user.getName());
             ps.setObject(2, user.getPassword());
             ps.setObject(3, user.getCreatedAt());

@@ -40,13 +40,13 @@ public class AppConfig {
 
     @Bean
     ViewResolver createViewResolver(@Autowired ServletContext servletContext){
-        var engine = new PebbleEngine.Builder().autoEscaping(true)
+        PebbleEngine engine = new PebbleEngine.Builder().autoEscaping(true)
             // cache:
             .cacheActive(false)
             // loader:
             .loader(new Servlet5Loader(servletContext))
             .build();
-        var viewResolver = new PebbleViewResolver(engine);
+        PebbleViewResolver viewResolver = new PebbleViewResolver(engine);
         viewResolver.setPrefix("/WEB-INF/templates/");
         viewResolver.setSuffix("");
         return viewResolver;
