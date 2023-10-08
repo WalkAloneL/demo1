@@ -40,6 +40,7 @@ public class CommentService {
         comment.setName(user.getName());
         comment.setText(text);
         comment.setCreatedAt(System.currentTimeMillis());
+        logger.info("user {} try to add comment : {}", user.getName(),text);
         KeyHolder key = new GeneratedKeyHolder();
         if(1 != jdbcTemplate.update((conn) -> {
             PreparedStatement ps = conn.prepareStatement("INSERT INTO comments(name,text,createdAt) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);

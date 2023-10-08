@@ -45,7 +45,6 @@ public class CommentController {
         try {
             User user = (User)session.getAttribute(KEY_USER);
             if(user != null){
-                logger.info("user {} try to add comment : {}", user.getName(),text);
                 Comment comment = commentService.addComment(user,text);
             }
         } catch (RuntimeException e) {
